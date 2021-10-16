@@ -1,0 +1,264 @@
+
+BL49.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800100  00800100  000001be  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         0000016a  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  000001be  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000001f0  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000c8  00000000  00000000  00000230  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   000013ad  00000000  00000000  000002f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000df2  00000000  00000000  000016a5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   00000ddc  00000000  00000000  00002497  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  00000188  00000000  00000000  00003274  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    000007c4  00000000  00000000  000033fc  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000008a0  00000000  00000000  00003bc0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000a8  00000000  00000000  00004460  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 3e 00 	jmp	0x7c	; 0x7c <__ctors_end>
+   4:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+   8:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+   c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  10:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  14:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  18:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  1c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  20:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  24:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  28:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  2c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  30:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  34:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  38:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  3c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  40:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  44:	0c 94 9f 00 	jmp	0x13e	; 0x13e <__vector_17>
+  48:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  4c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  50:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  54:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  58:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  5c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  60:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  64:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  68:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  6c:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  70:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  74:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+  78:	0c 94 50 00 	jmp	0xa0	; 0xa0 <__bad_interrupt>
+
+0000007c <__ctors_end>:
+  7c:	11 24       	eor	r1, r1
+  7e:	1f be       	out	0x3f, r1	; 63
+  80:	cf ef       	ldi	r28, 0xFF	; 255
+  82:	d8 e0       	ldi	r29, 0x08	; 8
+  84:	de bf       	out	0x3e, r29	; 62
+  86:	cd bf       	out	0x3d, r28	; 61
+
+00000088 <__do_clear_bss>:
+  88:	21 e0       	ldi	r18, 0x01	; 1
+  8a:	a0 e0       	ldi	r26, 0x00	; 0
+  8c:	b1 e0       	ldi	r27, 0x01	; 1
+  8e:	01 c0       	rjmp	.+2      	; 0x92 <.do_clear_bss_start>
+
+00000090 <.do_clear_bss_loop>:
+  90:	1d 92       	st	X+, r1
+
+00000092 <.do_clear_bss_start>:
+  92:	a0 30       	cpi	r26, 0x00	; 0
+  94:	b2 07       	cpc	r27, r18
+  96:	e1 f7       	brne	.-8      	; 0x90 <.do_clear_bss_loop>
+  98:	0e 94 8b 00 	call	0x116	; 0x116 <main>
+  9c:	0c 94 b3 00 	jmp	0x166	; 0x166 <_exit>
+
+000000a0 <__bad_interrupt>:
+  a0:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a4 <can_clear_all_mob>:
+            }
+        } // while (evaluate ...
+    } // while (bt_not_found ...
+
+    return (bt_performed);
+}
+  a4:	80 e0       	ldi	r24, 0x00	; 0
+  a6:	0d c0       	rjmp	.+26     	; 0xc2 <can_clear_all_mob+0x1e>
+  a8:	98 2f       	mov	r25, r24
+  aa:	92 95       	swap	r25
+  ac:	90 7f       	andi	r25, 0xF0	; 240
+  ae:	90 93 ed 00 	sts	0x00ED, r25	; 0x8000ed <__TEXT_REGION_LENGTH__+0x7f80ed>
+  b2:	ee ee       	ldi	r30, 0xEE	; 238
+  b4:	f0 e0       	ldi	r31, 0x00	; 0
+  b6:	01 c0       	rjmp	.+2      	; 0xba <can_clear_all_mob+0x16>
+  b8:	11 92       	st	Z+, r1
+  ba:	e8 3f       	cpi	r30, 0xF8	; 248
+  bc:	f1 05       	cpc	r31, r1
+  be:	e0 f3       	brcs	.-8      	; 0xb8 <can_clear_all_mob+0x14>
+  c0:	8f 5f       	subi	r24, 0xFF	; 255
+  c2:	86 30       	cpi	r24, 0x06	; 6
+  c4:	88 f3       	brcs	.-30     	; 0xa8 <can_clear_all_mob+0x4>
+  c6:	08 95       	ret
+
+000000c8 <can_fixed_baudrate>:
+//! @return Baudrate Status
+//!         fixed = 1: baudrate performed
+//------------------------------------------------------------------------------
+uint8_t can_fixed_baudrate(uint8_t mode)
+{
+    Can_reset();
+  c8:	81 e0       	ldi	r24, 0x01	; 1
+  ca:	80 93 d8 00 	sts	0x00D8, r24	; 0x8000d8 <__TEXT_REGION_LENGTH__+0x7f80d8>
+    Can_conf_bt();
+  ce:	86 e0       	ldi	r24, 0x06	; 6
+  d0:	80 93 e2 00 	sts	0x00E2, r24	; 0x8000e2 <__TEXT_REGION_LENGTH__+0x7f80e2>
+  d4:	8c e0       	ldi	r24, 0x0C	; 12
+  d6:	80 93 e3 00 	sts	0x00E3, r24	; 0x8000e3 <__TEXT_REGION_LENGTH__+0x7f80e3>
+  da:	87 e3       	ldi	r24, 0x37	; 55
+  dc:	80 93 e4 00 	sts	0x00E4, r24	; 0x8000e4 <__TEXT_REGION_LENGTH__+0x7f80e4>
+    return 1;
+  e0:	81 e0       	ldi	r24, 0x01	; 1
+  e2:	08 95       	ret
+
+000000e4 <can_init>:
+//!         ==1: baudrate performed 
+//!
+//------------------------------------------------------------------------------
+uint8_t can_init(uint8_t mode)
+{
+    if ((Can_bit_timing(mode))==0) return (0);  // c.f. macro in "can_drv.h"
+  e4:	0e 94 64 00 	call	0xc8	; 0xc8 <can_fixed_baudrate>
+  e8:	88 23       	and	r24, r24
+  ea:	41 f0       	breq	.+16     	; 0xfc <can_init+0x18>
+    can_clear_all_mob();                        // c.f. function in "can_drv.c"
+  ec:	0e 94 52 00 	call	0xa4	; 0xa4 <can_clear_all_mob>
+    Can_enable();                               // c.f. macro in "can_drv.h" 
+  f0:	e8 ed       	ldi	r30, 0xD8	; 216
+  f2:	f0 e0       	ldi	r31, 0x00	; 0
+  f4:	80 81       	ld	r24, Z
+  f6:	82 60       	ori	r24, 0x02	; 2
+  f8:	80 83       	st	Z, r24
+    return (1);
+  fa:	81 e0       	ldi	r24, 0x01	; 1
+}
+  fc:	08 95       	ret
+
+000000fe <chip_init>:
+}
+
+void chip_init (void)
+{
+	// Make sure sys clock is at least 8MHz
+	CLKPR = 0x80;
+  fe:	e1 e6       	ldi	r30, 0x61	; 97
+ 100:	f0 e0       	ldi	r31, 0x00	; 0
+ 102:	80 e8       	ldi	r24, 0x80	; 128
+ 104:	80 83       	st	Z, r24
+	CLKPR = 0x00;
+ 106:	10 82       	st	Z, r1
+	
+	// leds an pb5 (led2) und pb6 (led3), active high
+	// leds sind aus
+	LEDS |= (1 << LED2)|(1 << LED3);
+ 108:	84 b1       	in	r24, 0x04	; 4
+ 10a:	80 66       	ori	r24, 0x60	; 96
+ 10c:	84 b9       	out	0x04, r24	; 4
+	LEDS_PORT &= ~((1 << LED2)|(1 << LED3));
+ 10e:	85 b1       	in	r24, 0x05	; 5
+ 110:	8f 79       	andi	r24, 0x9F	; 159
+ 112:	85 b9       	out	0x05, r24	; 5
+ 114:	08 95       	ret
+
+00000116 <main>:
+
+static void chip_init (void);
+
+int main(void)
+{
+	chip_init();
+ 116:	0e 94 7f 00 	call	0xfe	; 0xfe <chip_init>
+	sei();
+ 11a:	78 94       	sei
+	can_init(0);
+ 11c:	80 e0       	ldi	r24, 0x00	; 0
+ 11e:	0e 94 72 00 	call	0xe4	; 0xe4 <can_init>
+	timer0_init();
+ 122:	0e 94 94 00 	call	0x128	; 0x128 <timer0_init>
+ 126:	ff cf       	rjmp	.-2      	; 0x126 <main+0x10>
+
+00000128 <timer0_init>:
+st_cmd_t msg;
+
+void timer0_init (void)
+{
+	//100ms timer, preload 6, prescalter 64
+	TCNT0 = 6;
+ 128:	86 e0       	ldi	r24, 0x06	; 6
+ 12a:	86 bd       	out	0x26, r24	; 38
+	TIMSK0 |= (1 << TOIE0);
+ 12c:	ee e6       	ldi	r30, 0x6E	; 110
+ 12e:	f0 e0       	ldi	r31, 0x00	; 0
+ 130:	80 81       	ld	r24, Z
+ 132:	81 60       	ori	r24, 0x01	; 1
+ 134:	80 83       	st	Z, r24
+	TCCR0A = 0x0;
+ 136:	14 bc       	out	0x24, r1	; 36
+	TCCR0B = (1 << CS00)|(1 << CS01);
+ 138:	83 e0       	ldi	r24, 0x03	; 3
+ 13a:	85 bd       	out	0x25, r24	; 37
+ 13c:	08 95       	ret
+
+0000013e <__vector_17>:
+	
+}
+
+ISR(TIMER0_OVF_vect)
+{
+ 13e:	1f 92       	push	r1
+ 140:	0f 92       	push	r0
+ 142:	0f b6       	in	r0, 0x3f	; 63
+ 144:	0f 92       	push	r0
+ 146:	11 24       	eor	r1, r1
+ 148:	8f 93       	push	r24
+ 14a:	9f 93       	push	r25
+	TCNT0 = 6;
+ 14c:	86 e0       	ldi	r24, 0x06	; 6
+ 14e:	86 bd       	out	0x26, r24	; 38
+		msg.cmd = CMD_NONE;
+	
+		while(can_cmd(&msg) != CAN_CMD_ACCEPTED); // wait for MOb to configure
+		while(can_get_status(&msg) == CAN_STATUS_NOT_COMPLETED); // wait for a transmit request to come in, and send a response
+	*/
+	LED2_TOG;
+ 150:	95 b1       	in	r25, 0x05	; 5
+ 152:	80 e2       	ldi	r24, 0x20	; 32
+ 154:	89 27       	eor	r24, r25
+ 156:	85 b9       	out	0x05, r24	; 5
+ 158:	9f 91       	pop	r25
+ 15a:	8f 91       	pop	r24
+ 15c:	0f 90       	pop	r0
+ 15e:	0f be       	out	0x3f, r0	; 63
+ 160:	0f 90       	pop	r0
+ 162:	1f 90       	pop	r1
+ 164:	18 95       	reti
+
+00000166 <_exit>:
+ 166:	f8 94       	cli
+
+00000168 <__stop_program>:
+ 168:	ff cf       	rjmp	.-2      	; 0x168 <__stop_program>
