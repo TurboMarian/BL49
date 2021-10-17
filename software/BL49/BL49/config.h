@@ -24,7 +24,7 @@
 
 #ifndef CAN_BAUDRATE
 #warning "CAN_BAUDRATE war noch nicht definiert, wird nun mit 250kbit definiert"
-#define CAN_BAUDRATE	250
+#define CAN_BAUDRATE	500
 #endif
 
 #define LEDS			DDRB
