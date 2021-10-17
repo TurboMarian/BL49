@@ -40,6 +40,22 @@
         </dependencies>
       </framework-data>
     </AsfFrameworkConfig>
+    <avrtool>com.atmel.avrdbg.tool.atmelice</avrtool>
+    <avrtoolserialnumber>J41800050374</avrtoolserialnumber>
+    <avrdeviceexpectedsignature>0x1E9584</avrdeviceexpectedsignature>
+    <com_atmel_avrdbg_tool_atmelice>
+      <ToolOptions>
+        <InterfaceProperties>
+          <IspClock>125000</IspClock>
+        </InterfaceProperties>
+        <InterfaceName>ISP</InterfaceName>
+      </ToolOptions>
+      <ToolType>com.atmel.avrdbg.tool.atmelice</ToolType>
+      <ToolNumber>J41800050374</ToolNumber>
+      <ToolName>Atmel-ICE</ToolName>
+    </com_atmel_avrdbg_tool_atmelice>
+    <avrtoolinterface>ISP</avrtoolinterface>
+    <avrtoolinterfaceclock>125000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <ToolchainSettings>
@@ -133,6 +149,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="adc\adc.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="adc\adc.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="can\can_drv.c">
       <SubType>compile</SubType>
     </Compile>
@@ -166,6 +188,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="can" />
+    <Folder Include="adc" />
     <Folder Include="timer" />
     <Folder Include="spi" />
   </ItemGroup>

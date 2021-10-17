@@ -27,6 +27,7 @@
 #define CAN_BAUDRATE	500
 #endif
 
+// leds
 #define LEDS			DDRB
 #define LEDS_PORT		PORTB
 #define LED2			PB5
@@ -37,6 +38,7 @@
 #define LED3_ON			(LEDS_PORT |= (1 << LED3))
 #define LED3_OFF		(LEDS_PORT &= ~(1 << LED3))
 #define LED3_TOG		(LEDS_PORT ^= (1 << LED3))
+
 
 
 #endif /* CONFIG_H_ */

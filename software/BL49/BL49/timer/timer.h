@@ -16,13 +16,14 @@
 #include "../can/can_lib.h"
 
 #define CAN_ID		0x130
-#define CAN_DLC		0
+#define CAN_DLC		4
 
 
 // timer0: 8-bit
 // timer1: 16-bit
 
 void timer0_init (void);
+void timer_delay_ms (uint16_t delay);
 
 
 #endif /* TIMER_H_ */

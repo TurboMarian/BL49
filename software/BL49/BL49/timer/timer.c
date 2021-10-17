@@ -7,28 +7,33 @@
 
 #include "timer.h"
 
-st_cmd_t msg;
-
 void timer0_init (void)
 {
-	//100ms timer, preload 6, prescalter 64
-	TCNT0 = 6;
+	//100ms timer, preload 178, prescalter 1024
+	TIFR0 = (1<<TOV0);
+	TCNT0 = 178;
+	TCCR0B = (1 << CS00)|(1 << CS02);
 	TIMSK0 |= (1 << TOIE0);
-	TCCR0A = 0x0;
-	TCCR0B = (1 << CS00)|(1 << CS01);
 	
 }
 
+void timer_delay_ms (uint16_t delay)
+{
+	do
+	{
+		TCNT0 = 6;
+		TCCR0B |= (1 << CS01)|(1 << CS00);
+		while ((TIFR0 & (1 << TOV0)) == 0);
+		TIFR0 |= (1 << TOV0);
+		delay--;
+	} while (delay > 0);
+}
+
+/*
 ISR(TIMER0_OVF_vect)
 {
-	TCNT0 = 6;
-	/*
-		msg.id.std = CAN_ID;
-		msg.dlc = CAN_DLC;
-		msg.cmd = CMD_NONE;
-	
-		while(can_cmd(&msg) != CAN_CMD_ACCEPTED); // wait for MOb to configure
-		while(can_get_status(&msg) == CAN_STATUS_NOT_COMPLETED); // wait for a transmit request to come in, and send a response
-	*/
+	TCNT0 = 178;
 	LED2_TOG;
+	LED3_TOG;
 }
+*/

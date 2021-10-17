@@ -34,12 +34,14 @@ LINKER_SCRIPT_DEP:=
 # Every subdirectory with source files must be described here
 SUBDIRS :=  \
 ../can \
+../adc \
 ../timer \
 ../spi
 
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
+../adc/adc.c \
 ../can/can_drv.c \
 ../can/can_lib.c \
 ../main.c \
@@ -54,6 +56,7 @@ ASM_SRCS +=
 
 
 OBJS +=  \
+adc/adc.o \
 can/can_drv.o \
 can/can_lib.o \
 main.o \
@@ -61,6 +64,7 @@ spi/spi.o \
 timer/timer.o
 
 OBJS_AS_ARGS +=  \
+adc/adc.o \
 can/can_drv.o \
 can/can_lib.o \
 main.o \
@@ -68,6 +72,7 @@ spi/spi.o \
 timer/timer.o
 
 C_DEPS +=  \
+adc/adc.d \
 can/can_drv.d \
 can/can_lib.d \
 main.d \
@@ -75,6 +80,7 @@ spi/spi.d \
 timer/timer.d
 
 C_DEPS_AS_ARGS +=  \
+adc/adc.d \
 can/can_drv.d \
 can/can_lib.d \
 main.d \
@@ -95,6 +101,13 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+adc/adc.o: ../adc/adc.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000 -DFOSC=F_CPU/1000 -DCAN_BAUDRATE=500  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=atmega32m1 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32m1" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
 can/can_drv.o: ../can/can_drv.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
