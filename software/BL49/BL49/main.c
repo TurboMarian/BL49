@@ -19,18 +19,14 @@ static void chip_init (void);
 
 int main(void)
 {
-	
 	chip_init();
-
 	can_init(0);
-	// timer0_init();
 	sei();
-	// LED2_TOG;
-	// LED3_TOG;
+	
 
    	uint8_t pt_data[CAN_DLC];
 	st_cmd_t msg;
-	msg.id.std = CAN_ID;
+	msg.id.ext = CAN_ID;
 	msg.dlc = CAN_DLC;
 	msg.cmd = CMD_TX;
 	pt_data[0] = 0xF1;
@@ -41,11 +37,11 @@ int main(void)
 	
     while (1) 
     {
-		
+
 		while(can_cmd(&msg) != CAN_CMD_ACCEPTED); // wait for MOb to configure
 		while(can_get_status(&msg) == CAN_STATUS_NOT_COMPLETED); // wait for a transmit request to come in, and send a response
 		LED2_TOG;
-		timer_delay_ms(25);
+		timer_delay_ms(10);
 		
     }
 }

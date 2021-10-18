@@ -15,9 +15,6 @@
 #include "../config.h"
 #include "../can/can_lib.h"
 
-#define CAN_ID		0x130
-#define CAN_DLC		4
-
 
 // timer0: 8-bit
 // timer1: 16-bit

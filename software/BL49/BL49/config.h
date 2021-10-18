@@ -27,6 +27,9 @@
 #define CAN_BAUDRATE	500
 #endif
 
+#define CAN_ID		0x180
+#define CAN_DLC		8
+
 // leds
 #define LEDS			DDRB
 #define LEDS_PORT		PORTB
@@ -39,6 +42,7 @@
 #define LED3_OFF		(LEDS_PORT &= ~(1 << LED3))
 #define LED3_TOG		(LEDS_PORT ^= (1 << LED3))
 
+#define SWAP_UINT16(x) (((x) << 8) | ((x) >> 8))
 
 
 #endif /* CONFIG_H_ */

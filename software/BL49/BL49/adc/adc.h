@@ -22,6 +22,7 @@
 
 void adc_init (void);
 uint16_t adc_read (uint8_t channel);
+float adc_chip_temperature (void);
 
 
 #endif /* ADC_H_ */

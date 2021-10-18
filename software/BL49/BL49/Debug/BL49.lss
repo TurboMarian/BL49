@@ -3,29 +3,29 @@ BL49.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000000  00800100  00800100  00000de0  2**0
+  0 .data         00000000  00800100  00800100  00000de8  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000d8c  00000000  00000000  00000054  2**1
+  1 .text         00000d94  00000000  00000000  00000054  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .comment      00000030  00000000  00000000  00000de0  2**0
+  2 .comment      00000030  00000000  00000000  00000de8  2**0
                   CONTENTS, READONLY
-  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000e10  2**2
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000e18  2**2
                   CONTENTS, READONLY
-  4 .debug_aranges 000000c8  00000000  00000000  00000e50  2**0
+  4 .debug_aranges 000000c8  00000000  00000000  00000e58  2**0
                   CONTENTS, READONLY, DEBUGGING
-  5 .debug_info   00001429  00000000  00000000  00000f18  2**0
+  5 .debug_info   00001439  00000000  00000000  00000f20  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_abbrev 00000e19  00000000  00000000  00002341  2**0
+  6 .debug_abbrev 00000e19  00000000  00000000  00002359  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_line   00000e1f  00000000  00000000  0000315a  2**0
+  7 .debug_line   00000e1f  00000000  00000000  00003172  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_frame  00000184  00000000  00000000  00003f7c  2**2
+  8 .debug_frame  00000184  00000000  00000000  00003f94  2**2
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_str    000007cd  00000000  00000000  00004100  2**0
+  9 .debug_str    000007cd  00000000  00000000  00004118  2**0
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_loc    000008c6  00000000  00000000  000048cd  2**0
+ 10 .debug_loc    000008c6  00000000  00000000  000048e5  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_ranges 000000a8  00000000  00000000  00005193  2**0
+ 11 .debug_ranges 000000a8  00000000  00000000  000051ab  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -82,7 +82,7 @@ Disassembly of section .text:
   9a:	de bf       	out	0x3e, r29	; 62
   9c:	cd bf       	out	0x3d, r28	; 61
   9e:	0e 94 76 06 	call	0xcec	; 0xcec <main>
-  a2:	0c 94 c4 06 	jmp	0xd88	; 0xd88 <_exit>
+  a2:	0c 94 c8 06 	jmp	0xd90	; 0xd90 <_exit>
 
 000000a6 <__bad_interrupt>:
   a6:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
@@ -318,7 +318,7 @@ uint8_t can_cmd(st_cmd_t* cmd)
  200:	bd c4       	rjmp	.+2426   	; 0xb7c <__stack+0x27d>
  202:	e2 5c       	subi	r30, 0xC2	; 194
  204:	ff 4f       	sbci	r31, 0xFF	; 255
- 206:	0c 94 be 06 	jmp	0xd7c	; 0xd7c <__tablejump2__>
+ 206:	0c 94 c2 06 	jmp	0xd84	; 0xd84 <__tablejump2__>
       {
         //------------      
         case CMD_TX:    
@@ -2030,126 +2030,126 @@ int main(void)
  cee:	df 93       	push	r29
  cf0:	cd b7       	in	r28, 0x3d	; 61
  cf2:	de b7       	in	r29, 0x3e	; 62
- cf4:	60 97       	sbiw	r28, 0x10	; 16
+ cf4:	64 97       	sbiw	r28, 0x14	; 20
  cf6:	0f b6       	in	r0, 0x3f	; 63
  cf8:	f8 94       	cli
  cfa:	de bf       	out	0x3e, r29	; 62
  cfc:	0f be       	out	0x3f, r0	; 63
  cfe:	cd bf       	out	0x3d, r28	; 61
-	
 	chip_init();
  d00:	0e 94 6f 06 	call	0xcde	; 0xcde <chip_init>
-
 	can_init(0);
  d04:	80 e0       	ldi	r24, 0x00	; 0
  d06:	0e 94 b3 00 	call	0x166	; 0x166 <can_init>
-	// timer0_init();
 	sei();
  d0a:	78 94       	sei
-
-    /* Replace with your application code */
 	
-	uint8_t pt_data[CAN_DLC];
+
+   	uint8_t pt_data[CAN_DLC];
 	st_cmd_t msg;
-	msg.id.std = CAN_ID;
- d0c:	80 e3       	ldi	r24, 0x30	; 48
+	msg.id.ext = CAN_ID;
+ d0c:	80 e8       	ldi	r24, 0x80	; 128
  d0e:	91 e0       	ldi	r25, 0x01	; 1
- d10:	98 87       	std	Y+8, r25	; 0x08
- d12:	8f 83       	std	Y+7, r24	; 0x07
+ d10:	a0 e0       	ldi	r26, 0x00	; 0
+ d12:	b0 e0       	ldi	r27, 0x00	; 0
+ d14:	8b 87       	std	Y+11, r24	; 0x0b
+ d16:	9c 87       	std	Y+12, r25	; 0x0c
+ d18:	ad 87       	std	Y+13, r26	; 0x0d
+ d1a:	be 87       	std	Y+14, r27	; 0x0e
 	msg.dlc = CAN_DLC;
- d14:	84 e0       	ldi	r24, 0x04	; 4
- d16:	8b 87       	std	Y+11, r24	; 0x0b
+ d1c:	88 e0       	ldi	r24, 0x08	; 8
+ d1e:	8f 87       	std	Y+15, r24	; 0x0f
 	msg.cmd = CMD_TX;
- d18:	81 e0       	ldi	r24, 0x01	; 1
- d1a:	8e 83       	std	Y+6, r24	; 0x06
+ d20:	81 e0       	ldi	r24, 0x01	; 1
+ d22:	8a 87       	std	Y+10, r24	; 0x0a
 	pt_data[0] = 0xF1;
- d1c:	81 ef       	ldi	r24, 0xF1	; 241
- d1e:	89 83       	std	Y+1, r24	; 0x01
+ d24:	81 ef       	ldi	r24, 0xF1	; 241
+ d26:	89 83       	std	Y+1, r24	; 0x01
 	pt_data[1] = 0xF2;
- d20:	82 ef       	ldi	r24, 0xF2	; 242
- d22:	8a 83       	std	Y+2, r24	; 0x02
+ d28:	82 ef       	ldi	r24, 0xF2	; 242
+ d2a:	8a 83       	std	Y+2, r24	; 0x02
 	pt_data[2] = 0xF3;
- d24:	83 ef       	ldi	r24, 0xF3	; 243
- d26:	8b 83       	std	Y+3, r24	; 0x03
+ d2c:	83 ef       	ldi	r24, 0xF3	; 243
+ d2e:	8b 83       	std	Y+3, r24	; 0x03
 	pt_data[3] = 0xF4;
- d28:	84 ef       	ldi	r24, 0xF4	; 244
- d2a:	8c 83       	std	Y+4, r24	; 0x04
+ d30:	84 ef       	ldi	r24, 0xF4	; 244
+ d32:	8c 83       	std	Y+4, r24	; 0x04
 	msg.pt_data = &pt_data[0];
- d2c:	ce 01       	movw	r24, r28
- d2e:	01 96       	adiw	r24, 0x01	; 1
- d30:	9d 87       	std	Y+13, r25	; 0x0d
- d32:	8c 87       	std	Y+12, r24	; 0x0c
+ d34:	ce 01       	movw	r24, r28
+ d36:	01 96       	adiw	r24, 0x01	; 1
+ d38:	99 8b       	std	Y+17, r25	; 0x11
+ d3a:	88 8b       	std	Y+16, r24	; 0x10
 	
     while (1) 
     {
-		
+
 		while(can_cmd(&msg) != CAN_CMD_ACCEPTED); // wait for MOb to configure
- d34:	ce 01       	movw	r24, r28
- d36:	05 96       	adiw	r24, 0x05	; 5
- d38:	0e 94 c0 00 	call	0x180	; 0x180 <can_cmd>
- d3c:	81 11       	cpse	r24, r1
- d3e:	fa cf       	rjmp	.-12     	; 0xd34 <main+0x48>
+ d3c:	ce 01       	movw	r24, r28
+ d3e:	09 96       	adiw	r24, 0x09	; 9
+ d40:	0e 94 c0 00 	call	0x180	; 0x180 <can_cmd>
+ d44:	81 11       	cpse	r24, r1
+ d46:	fa cf       	rjmp	.-12     	; 0xd3c <main+0x50>
 		while(can_get_status(&msg) == CAN_STATUS_NOT_COMPLETED); // wait for a transmit request to come in, and send a response
- d40:	ce 01       	movw	r24, r28
- d42:	05 96       	adiw	r24, 0x05	; 5
- d44:	0e 94 d0 05 	call	0xba0	; 0xba0 <can_get_status>
- d48:	81 30       	cpi	r24, 0x01	; 1
- d4a:	d1 f3       	breq	.-12     	; 0xd40 <main+0x54>
+ d48:	ce 01       	movw	r24, r28
+ d4a:	09 96       	adiw	r24, 0x09	; 9
+ d4c:	0e 94 d0 05 	call	0xba0	; 0xba0 <can_get_status>
+ d50:	81 30       	cpi	r24, 0x01	; 1
+ d52:	d1 f3       	breq	.-12     	; 0xd48 <main+0x5c>
 		LED2_TOG;
- d4c:	95 b1       	in	r25, 0x05	; 5
- d4e:	80 e2       	ldi	r24, 0x20	; 32
- d50:	89 27       	eor	r24, r25
- d52:	85 b9       	out	0x05, r24	; 5
-		timer_delay_ms(25);
- d54:	89 e1       	ldi	r24, 0x19	; 25
- d56:	90 e0       	ldi	r25, 0x00	; 0
- d58:	0e 94 af 06 	call	0xd5e	; 0xd5e <timer_delay_ms>
+ d54:	95 b1       	in	r25, 0x05	; 5
+ d56:	80 e2       	ldi	r24, 0x20	; 32
+ d58:	89 27       	eor	r24, r25
+ d5a:	85 b9       	out	0x05, r24	; 5
+		timer_delay_ms(10);
+ d5c:	8a e0       	ldi	r24, 0x0A	; 10
+ d5e:	90 e0       	ldi	r25, 0x00	; 0
+ d60:	0e 94 b3 06 	call	0xd66	; 0xd66 <timer_delay_ms>
 		
     }
- d5c:	eb cf       	rjmp	.-42     	; 0xd34 <main+0x48>
+ d64:	eb cf       	rjmp	.-42     	; 0xd3c <main+0x50>
 
-00000d5e <timer_delay_ms>:
+00000d66 <timer_delay_ms>:
 	TIMSK0 |= (1 << TOIE0);
 	
 }
 
 void timer_delay_ms (uint16_t delay)
 {
- d5e:	9c 01       	movw	r18, r24
+ d66:	9c 01       	movw	r18, r24
 	do
 	{
 		TCNT0 = 6;
- d60:	86 e0       	ldi	r24, 0x06	; 6
- d62:	86 bd       	out	0x26, r24	; 38
+ d68:	86 e0       	ldi	r24, 0x06	; 6
+ d6a:	86 bd       	out	0x26, r24	; 38
 		TCCR0B |= (1 << CS01)|(1 << CS00);
- d64:	95 b5       	in	r25, 0x25	; 37
- d66:	93 60       	ori	r25, 0x03	; 3
- d68:	95 bd       	out	0x25, r25	; 37
+ d6c:	95 b5       	in	r25, 0x25	; 37
+ d6e:	93 60       	ori	r25, 0x03	; 3
+ d70:	95 bd       	out	0x25, r25	; 37
 		while ((TIFR0 & (1 << TOV0)) == 0);
- d6a:	a8 9b       	sbis	0x15, 0	; 21
- d6c:	fe cf       	rjmp	.-4      	; 0xd6a <timer_delay_ms+0xc>
+ d72:	a8 9b       	sbis	0x15, 0	; 21
+ d74:	fe cf       	rjmp	.-4      	; 0xd72 <timer_delay_ms+0xc>
 		TIFR0 |= (1 << TOV0);
- d6e:	95 b3       	in	r25, 0x15	; 21
- d70:	91 60       	ori	r25, 0x01	; 1
- d72:	95 bb       	out	0x15, r25	; 21
+ d76:	95 b3       	in	r25, 0x15	; 21
+ d78:	91 60       	ori	r25, 0x01	; 1
+ d7a:	95 bb       	out	0x15, r25	; 21
 		delay--;
- d74:	21 50       	subi	r18, 0x01	; 1
- d76:	31 09       	sbc	r19, r1
+ d7c:	21 50       	subi	r18, 0x01	; 1
+ d7e:	31 09       	sbc	r19, r1
 	} while (delay > 0);
- d78:	99 f7       	brne	.-26     	; 0xd60 <timer_delay_ms+0x2>
+ d80:	99 f7       	brne	.-26     	; 0xd68 <timer_delay_ms+0x2>
 }
- d7a:	08 95       	ret
+ d82:	08 95       	ret
 
-00000d7c <__tablejump2__>:
- d7c:	ee 0f       	add	r30, r30
- d7e:	ff 1f       	adc	r31, r31
- d80:	05 90       	lpm	r0, Z+
- d82:	f4 91       	lpm	r31, Z
- d84:	e0 2d       	mov	r30, r0
- d86:	09 94       	ijmp
+00000d84 <__tablejump2__>:
+ d84:	ee 0f       	add	r30, r30
+ d86:	ff 1f       	adc	r31, r31
+ d88:	05 90       	lpm	r0, Z+
+ d8a:	f4 91       	lpm	r31, Z
+ d8c:	e0 2d       	mov	r30, r0
+ d8e:	09 94       	ijmp
 
-00000d88 <_exit>:
- d88:	f8 94       	cli
+00000d90 <_exit>:
+ d90:	f8 94       	cli
 
-00000d8a <__stop_program>:
- d8a:	ff cf       	rjmp	.-2      	; 0xd8a <__stop_program>
+00000d92 <__stop_program>:
+ d92:	ff cf       	rjmp	.-2      	; 0xd92 <__stop_program>
