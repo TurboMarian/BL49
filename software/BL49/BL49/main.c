@@ -28,7 +28,7 @@ int main(void)
 	st_cmd_t msg;
 	msg.id.ext = CAN_ID;
 	msg.dlc = CAN_DLC;
-	msg.cmd = CMD_TX;
+	msg.cmd = CMD_TX_DATA;
 	
 	uint16_t lambda = 10000;
 	lambda = bswap_16(lambda);
@@ -42,7 +42,8 @@ int main(void)
 	pt_data[2] = oxy;
 	pt_data[3] = (uint8_t)(oxy >> 8);
 	
-	pt_data[4] = (uint8_t)((uint32_t) adc_ad12v() * 24500UL / 1023UL/ 100UL );
+	// pt_data[4] = (uint8_t)((uint32_t) adc_ad12v() * 24500UL / 1023UL/ 100UL );
+	pt_data[4] = (uint8_t)((uint32_t) adc_ad12v() * 245UL / 1023UL );
 	pt_data[5] = (uint8_t)((float) pt_data[4] *0.85f);
 	
 	pt_data[6] = (1 << 7)|(1 << 4)|(1 << 1);	// bosch lsu4.9, heater pid locked, lambda valid
