@@ -29,15 +29,18 @@ uint16_t adc_read (uint8_t channel)
 float adc_chip_temperature (void)
 {
 	float temp1 = 0;
-	float temp2 = 0;
 	ADMUX = (1 << REFS0)|(1 << MUX3)|(1 << MUX1)|(1 << MUX0);			// select channel
 	ADCSRA |= (1<<ADSC);		// start single conversion
 	while(ADCSRA & (1<<ADSC));	// wait till done
 	
-	temp1 = ADC * (5.0/1024)*1000.0/25;
-	
-	
-	int i = 10;
-	
+	temp1 = ADC * (5.0/1024)*1000.0/25;	
 	return temp1;
+}
+
+uint16_t adc_ad12v (void)	// adc channel 5, factor 4.9
+{
+	ADMUX = (1 << REFS0)|(1 << MUX2)|(1 << MUX0);			// select channel
+	ADCSRA |= (1<<ADSC);		// start single conversion
+	while(ADCSRA & (1<<ADSC));	// wait till done
+	return ADC;
 }

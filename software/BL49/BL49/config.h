@@ -42,7 +42,13 @@
 #define LED3_OFF		(LEDS_PORT &= ~(1 << LED3))
 #define LED3_TOG		(LEDS_PORT ^= (1 << LED3))
 
-#define SWAP_UINT16(x) (((x) << 8) | ((x) >> 8))
+static __inline uint16_t __bswap_16(uint16_t __x)
+{
+	return (__x << 8)|(__x >> 8);
+}
+
+#define bswap_16(x) __bswap_16(x)
+
 
 
 #endif /* CONFIG_H_ */

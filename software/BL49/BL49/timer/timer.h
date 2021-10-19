@@ -13,7 +13,6 @@
 #include <avr/interrupt.h>
 #include <stdint.h>
 #include "../config.h"
-#include "../can/can_lib.h"
 
 
 // timer0: 8-bit
