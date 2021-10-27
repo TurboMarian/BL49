@@ -23,7 +23,7 @@
 #endif
 
 #ifndef CAN_BAUDRATE
-#warning "CAN_BAUDRATE war noch nicht definiert, wird nun mit 250kbit definiert"
+#warning "CAN_BAUDRATE war noch nicht definiert, wird nun mit 500kbit definiert"
 #define CAN_BAUDRATE	500
 #endif
 
@@ -41,14 +41,5 @@
 #define LED3_ON			(LEDS_PORT |= (1 << LED3))
 #define LED3_OFF		(LEDS_PORT &= ~(1 << LED3))
 #define LED3_TOG		(LEDS_PORT ^= (1 << LED3))
-
-static __inline uint16_t __bswap_16(uint16_t __x)
-{
-	return (__x << 8)|(__x >> 8);
-}
-
-#define bswap_16(x) __bswap_16(x)
-
-
 
 #endif /* CONFIG_H_ */

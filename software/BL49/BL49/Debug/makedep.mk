@@ -8,6 +8,8 @@ can\can_drv.c
 
 can\can_lib.c
 
+dac\dac.c
+
 main.c
 
 spi\spi.c

@@ -10,18 +10,22 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include "adc/adc.h"
+#include "dac/dac.h"
 #include "can/can_lib.h"
 #include "timer/timer.h"
 
 #include "config.h"
+#include "helpers.h"
 
 static void chip_init (void);
 
 int main(void)
 {
 	chip_init();
-	can_init(0);
+	can_init(1);
+	timer_delay_ms(50);
 	adc_init();
+	dac_init();
 	sei();
 	
    	uint8_t pt_data[CAN_DLC];
@@ -55,18 +59,16 @@ int main(void)
     {
 		while(can_cmd(&msg) != CAN_CMD_ACCEPTED); // wait for MOb to configure
 		while(can_get_status(&msg) == CAN_STATUS_NOT_COMPLETED); // wait for a transmit request to come in, and send a response
+		dac_value(1080);
 		LED2_TOG;
-		timer_delay_ms(10);	
+		timer_delay_ms(10);
     }
 }
 
 void chip_init (void)
 {
-	// Make sure sys clock is at least 8MHz
-	/*
 	CLKPR = 0x80;
 	CLKPR = 0x00;
-	*/
 	
 	// leds at pb5 (led2) and pb6 (led3), active high
 	// leds are off
