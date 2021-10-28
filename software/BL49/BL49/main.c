@@ -13,12 +13,14 @@
 #include "dac/dac.h"
 #include "can/can_lib.h"
 #include "timer/timer.h"
+#include "spi/spi.h"
 #include "pwm/pwm.h"
+#include "chip/chip.h"
+#include "chip/gpio.h"
+#include "cj125/cj125.h"
 
 #include "config.h"
 #include "helpers.h"
-
-static void chip_init (void);
 
 int main(void)
 {
@@ -27,8 +29,13 @@ int main(void)
 	timer_delay_ms(50);
 	adc_init();
 	dac_init();
+	spi_init();
+	pwm_init();
 	sei();
 	
+	uint16_t retVal;
+	
+	/*
    	uint8_t pt_data[CAN_DLC];
 	st_cmd_t msg;
 	msg.id.ext = CAN_ID;
@@ -48,34 +55,32 @@ int main(void)
 	pt_data[3] = (uint8_t)(oxy >> 8);
 	
 	// pt_data[4] = (uint8_t)((uint32_t) adc_ad12v() * 24500UL / 1023UL/ 100UL );
-	pt_data[4] = (uint8_t)((uint32_t) adc_ad12v() * 245UL / 1023UL );
+	pt_data[4] = (uint8_t)((uint32_t) adc_ad12v() * 245UL / 1024UL );
 	pt_data[5] = (uint8_t)((float) pt_data[4] *0.85f);
 	
 	pt_data[6] = (1 << 7)|(1 << 4)|(1 << 1);	// bosch lsu4.9, heater pid locked, lambda valid
 	pt_data[7] = 0x06;
 	
 	msg.pt_data = &pt_data[0];
+	*/
 	
     while (1) 
     {
+		/*
 		while(can_cmd(&msg) != CAN_CMD_ACCEPTED); // wait for MOb to configure
 		while(can_get_status(&msg) == CAN_STATUS_NOT_COMPLETED); // wait for a transmit request to come in, and send a response
 		dac_value(1080);
 		LED2_TOG;
 		timer_delay_ms(10);
+		*/
+		
+		LED2_TOG;
+		// HEATER_TOG;
+		gpio_read_inputs(&inputs);
+		retVal = cj125_read_ident();
+		
+		retVal = cj125_read_diag();
+		
+		timer_delay_ms(200);
     }
-}
-
-void chip_init (void)
-{
-	CLKPR = 0x80;
-	CLKPR = 0x00;
-	
-	// leds at pb5 (led2) and pb6 (led3), active high
-	// leds are off
-	LEDS |= (1 << LED2)|(1 << LED3);
-	LEDS_PORT &= ~((1 << LED2)|(1 << LED3));
-	
-	// probe heater, output
-	HEATER_PORT |= (1 << HEATER_PIN);
 }

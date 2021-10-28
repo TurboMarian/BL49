@@ -26,7 +26,7 @@
     <OverrideVtorValue>exception_table</OverrideVtorValue>
     <BootSegment>2</BootSegment>
     <ResetRule>0</ResetRule>
-    <eraseonlaunchrule>0</eraseonlaunchrule>
+    <eraseonlaunchrule>1</eraseonlaunchrule>
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data xmlns="">
@@ -48,13 +48,13 @@
         <InterfaceProperties>
           <IspClock>125000</IspClock>
         </InterfaceProperties>
-        <InterfaceName>ISP</InterfaceName>
+        <InterfaceName>debugWIRE</InterfaceName>
       </ToolOptions>
       <ToolType>com.atmel.avrdbg.tool.atmelice</ToolType>
       <ToolNumber>J41800050374</ToolNumber>
       <ToolName>Atmel-ICE</ToolName>
     </com_atmel_avrdbg_tool_atmelice>
-    <avrtoolinterface>ISP</avrtoolinterface>
+    <avrtoolinterface>debugWIRE</avrtoolinterface>
     <avrtoolinterfaceclock>125000</avrtoolinterfaceclock>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -166,6 +166,21 @@
     <Compile Include="can\can_lib.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="chip\chip.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="chip\chip.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="cj125\cj125.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="cj125\cj125.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="cj125\cj125_register.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="config.h">
       <SubType>compile</SubType>
     </Compile>
@@ -173,6 +188,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="dac\dac.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="chip\gpio.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="chip\gpio.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="helpers.h">
@@ -204,6 +225,8 @@
     <Folder Include="can" />
     <Folder Include="adc" />
     <Folder Include="dac" />
+    <Folder Include="chip" />
+    <Folder Include="cj125" />
     <Folder Include="pwm" />
     <Folder Include="timer" />
     <Folder Include="spi" />
