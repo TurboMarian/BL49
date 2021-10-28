@@ -42,4 +42,9 @@
 #define LED3_OFF		(LEDS_PORT &= ~(1 << LED3))
 #define LED3_TOG		(LEDS_PORT ^= (1 << LED3))
 
+// heater
+#define	HEATER_PIN		PC1
+#define HEATER_PORT		DDRC
+
+
 #endif /* CONFIG_H_ */

@@ -181,6 +181,12 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="pwm\pwm.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="pwm\pwm.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="spi\spi.c">
       <SubType>compile</SubType>
     </Compile>
@@ -198,6 +204,7 @@
     <Folder Include="can" />
     <Folder Include="adc" />
     <Folder Include="dac" />
+    <Folder Include="pwm" />
     <Folder Include="timer" />
     <Folder Include="spi" />
   </ItemGroup>

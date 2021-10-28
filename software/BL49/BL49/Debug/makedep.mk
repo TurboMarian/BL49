@@ -12,6 +12,8 @@ dac\dac.c
 
 main.c
 
+pwm\pwm.c
+
 spi\spi.c
 
 timer\timer.c

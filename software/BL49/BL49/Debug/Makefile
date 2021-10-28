@@ -36,6 +36,7 @@ SUBDIRS :=  \
 ../can \
 ../adc \
 ../dac \
+../pwm \
 ../timer \
 ../spi
 
@@ -47,6 +48,7 @@ C_SRCS +=  \
 ../can/can_lib.c \
 ../dac/dac.c \
 ../main.c \
+../pwm/pwm.c \
 ../spi/spi.c \
 ../timer/timer.c
 
@@ -63,6 +65,7 @@ can/can_drv.o \
 can/can_lib.o \
 dac/dac.o \
 main.o \
+pwm/pwm.o \
 spi/spi.o \
 timer/timer.o
 
@@ -72,6 +75,7 @@ can/can_drv.o \
 can/can_lib.o \
 dac/dac.o \
 main.o \
+pwm/pwm.o \
 spi/spi.o \
 timer/timer.o
 
@@ -81,6 +85,7 @@ can/can_drv.d \
 can/can_lib.d \
 dac/dac.d \
 main.d \
+pwm/pwm.d \
 spi/spi.d \
 timer/timer.d
 
@@ -90,6 +95,7 @@ can/can_drv.d \
 can/can_lib.d \
 dac/dac.d \
 main.d \
+pwm/pwm.d \
 spi/spi.d \
 timer/timer.d
 
@@ -136,6 +142,13 @@ dac/dac.o: ../dac/dac.c
 	
 
 ./main.o: .././main.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000 -DFOSC=F_CPU/1000 -DCAN_BAUDRATE=500  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g3 -Wall -mmcu=atmega32m1 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32m1" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+pwm/pwm.o: ../pwm/pwm.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000 -DFOSC=F_CPU/1000 -DCAN_BAUDRATE=500  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g3 -Wall -mmcu=atmega32m1 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32m1" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

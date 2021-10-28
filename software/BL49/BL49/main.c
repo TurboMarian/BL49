@@ -13,6 +13,7 @@
 #include "dac/dac.h"
 #include "can/can_lib.h"
 #include "timer/timer.h"
+#include "pwm/pwm.h"
 
 #include "config.h"
 #include "helpers.h"
@@ -74,4 +75,7 @@ void chip_init (void)
 	// leds are off
 	LEDS |= (1 << LED2)|(1 << LED3);
 	LEDS_PORT &= ~((1 << LED2)|(1 << LED3));
+	
+	// probe heater, output
+	HEATER_PORT |= (1 << HEATER_PIN);
 }
