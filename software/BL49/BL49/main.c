@@ -34,6 +34,7 @@ int main(void)
 	sei();
 	
 	uint16_t retVal;
+	bool power_ok;
 	
 	/*
    	uint8_t pt_data[CAN_DLC];
@@ -80,6 +81,8 @@ int main(void)
 		retVal = cj125_read_ident();
 		
 		retVal = cj125_read_diag();
+		
+		power_ok = is_ubat_ok();
 		
 		timer_delay_ms(200);
     }

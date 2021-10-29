@@ -24,7 +24,9 @@ void adc_init (void);
 uint16_t adc_read (uint8_t channel);
 float adc_chip_temperature (void);
 uint16_t adc_ad12v (void);
-uint16_t adc_ad5v (void);
+
+// reads adc channel 3, here is 5v connected throw a shunt voltage reference and should deliver exactly 1.225v
+uint16_t adc_reference (void);
 uint16_t adc_ua (void);
 uint16_t adc_ur (void);
 

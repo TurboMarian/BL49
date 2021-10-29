@@ -46,7 +46,7 @@ uint16_t adc_ad12v (void)	// adc channel 5
 }
 
 
-uint16_t adc_ad5v (void)	// adc channel 3
+uint16_t adc_reference (void)	// adc channel 3
 {
 	ADMUX = (1 << REFS0)|(1 << MUX1)|(1 << MUX0);			// select channel
 	ADCSRA |= (1<<ADSC);		// start single conversion

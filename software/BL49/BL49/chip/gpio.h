@@ -23,13 +23,16 @@ typedef struct
 	uint16_t UA;
 	uint16_t UR;
 	uint16_t UBat;
-	uint16_t URef;
+	int16_t URef;
 	bool UBat_OK;
+	int16_t UOffset;
+	int16_t USupply;	
 } typeInputs;
 
 extern typeInputs inputs;
 
 void gpio_init (void);
 void gpio_read_inputs (typeInputs *inputs);
+bool is_ubat_ok (void);
 
 #endif /* GPIO_H_ */

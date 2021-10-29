@@ -29,7 +29,14 @@ void gpio_read_inputs (typeInputs *inputs)
 	inputs->UA = adc_ua();
 	inputs->UR = adc_ur();
 	inputs->UBat = adc_ad12v();
-	inputs->URef = adc_ad5v();
+	inputs->URef = (int16_t)((uint32_t) adc_reference() * 5000UL / 1024UL);	// here should be 1225 (shunt *1000)
 	inputs->UBat_OK = is_between(UBat_MIN, UBat_MAX, inputs->UBat);
+	inputs->UOffset = 1225 - inputs->URef;
+	inputs->USupply = (int16_t)((uint32_t)( inputs->UBat +inputs->UOffset) * 24500UL / 1024UL);
 }
 
+bool is_ubat_ok (void)
+{
+	inputs.UBat=adc_ad12v();
+	return inputs.UBat_OK = is_between(UBat_MIN, UBat_MAX, inputs.UBat);
+}
