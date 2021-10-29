@@ -34,5 +34,6 @@ extern typeInputs inputs;
 void gpio_init (void);
 void gpio_read_inputs (typeInputs *inputs);
 bool is_ubat_ok (void);
+uint16_t calculate_pwm_for_voltage (uint16_t voltage);
 
 #endif /* GPIO_H_ */

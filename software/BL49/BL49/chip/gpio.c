@@ -40,3 +40,8 @@ bool is_ubat_ok (void)
 	inputs.UBat=adc_ad12v();
 	return inputs.UBat_OK = is_between(UBat_MIN, UBat_MAX, inputs.UBat);
 }
+
+uint16_t calculate_pwm_for_voltage (uint16_t voltage)
+{	
+	return (uint16_t) ((float)voltage/inputs.USupply*1024.0);
+}

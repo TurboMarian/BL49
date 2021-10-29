@@ -34,6 +34,7 @@ int main(void)
 	sei();
 	
 	uint16_t retVal;
+	uint16_t pwm_duty;
 	bool power_ok;
 	
 	/*
@@ -83,6 +84,11 @@ int main(void)
 		retVal = cj125_read_diag();
 		
 		power_ok = is_ubat_ok();
+		
+		pwm_duty = calculate_pwm_for_voltage(1500);
+		pwm_set_duty(pwm_duty);
+		
+		
 		
 		timer_delay_ms(200);
     }
