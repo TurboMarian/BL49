@@ -16,7 +16,7 @@ void pwm_init (void)
 	
 	TCCR1A |= (1 << WGM11)|(1 << WGM10)|(1 << COM1B1);
 	TCCR1B |= (1 << WGM12)|(1 << CS11)|(1 << CS10);
-	pwm_set_duty(511);
+	pwm_set_duty(0);
 }
 
 void pwm_set_duty (uint16_t duty)
