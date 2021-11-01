@@ -202,6 +202,12 @@
     <Compile Include="main.c">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="probe\probe.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="probe\probe.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="pwm\pwm.c">
       <SubType>compile</SubType>
     </Compile>
@@ -227,6 +233,7 @@
     <Folder Include="dac" />
     <Folder Include="chip" />
     <Folder Include="cj125" />
+    <Folder Include="probe" />
     <Folder Include="pwm" />
     <Folder Include="timer" />
     <Folder Include="spi" />

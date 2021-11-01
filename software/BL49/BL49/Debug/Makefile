@@ -38,6 +38,7 @@ SUBDIRS :=  \
 ../dac \
 ../chip \
 ../cj125 \
+../probe \
 ../pwm \
 ../timer \
 ../spi
@@ -53,6 +54,7 @@ C_SRCS +=  \
 ../dac/dac.c \
 ../chip/gpio.c \
 ../main.c \
+../probe/probe.c \
 ../pwm/pwm.c \
 ../spi/spi.c \
 ../timer/timer.c
@@ -73,6 +75,7 @@ cj125/cj125.o \
 dac/dac.o \
 chip/gpio.o \
 main.o \
+probe/probe.o \
 pwm/pwm.o \
 spi/spi.o \
 timer/timer.o
@@ -86,6 +89,7 @@ cj125/cj125.o \
 dac/dac.o \
 chip/gpio.o \
 main.o \
+probe/probe.o \
 pwm/pwm.o \
 spi/spi.o \
 timer/timer.o
@@ -99,6 +103,7 @@ cj125/cj125.d \
 dac/dac.d \
 chip/gpio.d \
 main.d \
+probe/probe.d \
 pwm/pwm.d \
 spi/spi.d \
 timer/timer.d
@@ -112,6 +117,7 @@ cj125/cj125.d \
 dac/dac.d \
 chip/gpio.d \
 main.d \
+probe/probe.d \
 pwm/pwm.d \
 spi/spi.d \
 timer/timer.d
@@ -180,6 +186,13 @@ chip/gpio.o: ../chip/gpio.c
 	
 
 ./main.o: .././main.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000 -DFOSC=F_CPU/1000 -DCAN_BAUDRATE=500  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g3 -Wall -mmcu=atmega32m1 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32m1" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+probe/probe.o: ../probe/probe.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG -DF_CPU=16000000 -DFOSC=F_CPU/1000 -DCAN_BAUDRATE=500  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\include"  -O0 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g3 -Wall -mmcu=atmega32m1 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.6.364\gcc\dev\atmega32m1" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

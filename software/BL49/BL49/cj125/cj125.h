@@ -14,5 +14,9 @@
 
 uint16_t cj125_read_ident (void);
 uint16_t cj125_read_diag (void);
+void cj125_set_calibration_mode (void);
+void cj125_end_calibration_mode_v8 (void);
+void cj125_end_calibration_mode_v17 (void);
+
 
 #endif /* CJ125_H_ */

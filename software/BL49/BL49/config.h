@@ -64,5 +64,4 @@
 #define HEATER_TOG		(HEATER_PORT ^= (1 << HEATER_PIN))
 #define HEATER_MAX_V	0x021F	// 13V
 
-
 #endif /* CONFIG_H_ */
