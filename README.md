@@ -3,17 +3,20 @@ Wideband Lambda Controller with Bosch CJ125 and LSU 4.9 with 0-5V output and CAN
 
 Suitable Bosch lambda probe: 0 258 017 025<br/>
 
-Probe pinout:<br/>
-|Pin#|Color|Description|Function|
+**Probe pinout:**<br/>
+|Pin#|Color|Description|Symbol|
 |----|-----|--------|-----------|
 |1|red|Pump current APE|IP|
-|2|yellow|Virtual ground|VM|
+|2|yellow|Virtual ground IPN|VM|
 |3|white|Heater voltage H-|Uh-|
 |4|grey|Heater voltaget H+|Uh+|
-|5|black|Nernst voltage|UN|
+|5|green|Trim Resistor RT|IA|
+|6|black|Nernst voltage UN|RE|
 
+Changes:<br/>
 
-29.04.2020 - Version 0.0.1 - only hardware released / no software available at the moment<br/>
+- 29.04.2020 - Version 0.0.1 -hardware released / software still in development, needs some changes in hardware<br/>
+- 27.11.2021 - Version 0.0.3 - hardware in development, some modifications in analog PSU / software for V0.0.1 can be used with this<br/>
 
 Interactive BOM for easier hand-soldering you can download from the github (BL49/hardware/V0.0.1/bom)
 or access online here: https://oelprinz.000webhostapp.com/BL49/V0.0.1/iBOM/ibom.html <br/>
