@@ -21,9 +21,9 @@
 typedef struct
 {
 	uint16_t UA;
-	uint16_t UA_opt;
+	uint16_t UA_calibration;
 	uint16_t UR;
-	uint16_t UR_opt;
+	uint16_t UR_calibration;
 	uint16_t UBat;
 	int16_t URef;
 	bool UBat_OK;

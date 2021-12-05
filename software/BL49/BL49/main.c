@@ -73,19 +73,23 @@ int main(void)
 				state = CALIBRATE;
 			break;
 			
+			case WAIT_FOR_START:
+			break;
+			
+			
 			case CALIBRATE:
 				counter = 0;
 				cj125_set_calibration_mode();
 				while (counter < CJ125_CALIBRATION_SAMPLE_COUNT)
 				{
-					inputs.UA_opt += (adc_ua() + inputs.UOffset);
-					inputs.UR_opt += (adc_ur() + inputs.UOffset);
+					inputs.UA_calibration += (adc_ua() + inputs.UOffset);
+					inputs.UR_calibration += (adc_ur() + inputs.UOffset);
 					timer_delay_ms(10);
 					counter++;
 				}
 				
-				inputs.UA_opt /= CJ125_CALIBRATION_SAMPLE_COUNT;
-				inputs.UR_opt /= CJ125_CALIBRATION_SAMPLE_COUNT;
+				inputs.UA_calibration /= CJ125_CALIBRATION_SAMPLE_COUNT;
+				inputs.UR_calibration /= CJ125_CALIBRATION_SAMPLE_COUNT;
 				
 				// go to normal mode, ampl. 8x
 				cj125_end_calibration_mode_v8();

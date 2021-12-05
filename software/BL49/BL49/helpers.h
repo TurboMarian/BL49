@@ -29,6 +29,4 @@ static __inline float __adc2voltage(uint16_t __v)
 #define make_u16t(x1,x2) __make_u16t(x1, x2)
 #define adc2voltage(adc) __adc2voltage(adc)
 
-
-
 #endif /* HELPERS_H_ */

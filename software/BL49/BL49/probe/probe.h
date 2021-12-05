@@ -22,6 +22,7 @@ typedef enum
 {
 	INIT
 	, NO_PROBE
+	, WAIT_FOR_START
 	, CONDENSATE
 	, PREHEATING
 	, CALIBRATE

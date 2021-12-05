@@ -18,6 +18,8 @@ chip\gpio.c
 
 main.c
 
+pid\pid.c
+
 probe\probe.c
 
 pwm\pwm.c
