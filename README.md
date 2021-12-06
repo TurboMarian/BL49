@@ -1,7 +1,16 @@
 # BL49
 Wideband Lambda Controller with Bosch CJ125 and LSU 4.9 with 0-5V output and CAN-Bus Interface<br/>
 
-Suitable Bosch lambda probe: 0 258 017 025<br/>
+### Suitable Bosch lambda probes: ###
+|Bosch number  |Length overall|Comment|
+|--------------|--------------|-------|
+|0 258 017 025 |1000mm|Bosch motorsport part|
+|0 258 017 012 |1060mm||
+|0 281 004 184 |1000mm||
+|0 281 004 150 |1215mm||
+|0 258 017 126 |680mm|black, used by BMW after 09/2006 (1178 7561410)|
+|0 258 017 029 |620mm|grey, used by BMW after 09/2006 (1178 7539124)|
+|...|||
 
 **Probe pinout:**<br/>
 |Pin#|Color|Description|Symbol|

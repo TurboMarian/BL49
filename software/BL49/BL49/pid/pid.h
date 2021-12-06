@@ -20,6 +20,9 @@ const float pGain = 120;                                            /* Proportio
 const float iGain = 0.8;                                            /* Integral gain. Default = 0.8*/
 const float dGain = 10;                                             /* Derivative gain. Default = 10*/
 
+const uint16_t pwmMin = 0;											/* we have 10 bit fast mode PWM, min value*/
+const uint16_t pwmMax = 1023;										/* we have 10 bit fast mode PWM, max value*/
+
 uint16_t pid_control (uint16_t inputValue, uint16_t UR_calibration);
 
 #endif /* PID_H_ */

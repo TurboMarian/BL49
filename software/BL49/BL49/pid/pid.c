@@ -35,10 +35,10 @@ uint16_t pid_control (uint16_t inputValue, uint16_t UR_calibration)
 	  uint16_t RegulationOutput = pTerm + iTerm + dTerm;
 	  
 	  //Set maximum heater output (full power).
-	  if (RegulationOutput > 255) RegulationOutput = 255;
+	  if (RegulationOutput > pwmMax) RegulationOutput = pwmMax;
 	  
 	  //Set minimum heater value (cooling).
-	  if (RegulationOutput < 0.0) RegulationOutput = 0;
+	  if (RegulationOutput < pwmMin) RegulationOutput = pwmMin;
 
 	  //Return calculated PWM output.
 	  return RegulationOutput;
