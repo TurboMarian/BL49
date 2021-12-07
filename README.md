@@ -10,6 +10,8 @@ Wideband Lambda Controller with Bosch CJ125 and LSU 4.9 with 0-5V output and CAN
 |0 281 004 150 |1215mm||
 |0 258 017 126 |680mm|black, used by BMW after 09/2006 (1178 7561410)|
 |0 258 017 029 |620mm|grey, used by BMW after 09/2006 (1178 7539124)|
+|0 258 017 092 |950mm|black, used by BMW (1178 7540167)|
+|0 258 017 038 |340mm|grey, used by BMW (11787537984)|
 |...|||
 
 **Probe pinout:**<br/>
