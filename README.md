@@ -14,7 +14,7 @@ Wideband Lambda Controller with Bosch CJ125 and LSU 4.9 with 0-5V output and CAN
 |0 258 017 038 |340mm|grey, used by BMW (11787537984)|
 |...|||
 
-**Probe pinout:**<br/>
+**Probe pinout:**
 |Pin#|Color|Description|Symbol|
 |----|-----|--------|-----------|
 |1|red|Pump current APE|IP|
@@ -24,8 +24,11 @@ Wideband Lambda Controller with Bosch CJ125 and LSU 4.9 with 0-5V output and CAN
 |5|green|Trim Resistor RT|IA|
 |6|black|Nernst voltage UN|RE|
 
-Changes:<br/>
+**Ua and Ur during calibration (cold sensor, 10 calibration samples with 10ms pause):**
+- Ua: 0x332 => 1.62V
+- Ur: 0x232 => 1.13V
 
+**Changes:**
 - 29.04.2020 - Version 0.0.1 -hardware released / software still in development, needs some changes in hardware<br/>
 - 27.11.2021 - Version 0.0.3 - hardware in development, some modifications in analog PSU / software for V0.0.1 can be used with this<br/>
 
