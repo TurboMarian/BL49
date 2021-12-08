@@ -25,7 +25,7 @@ Wideband Lambda Controller with Bosch CJ125 and LSU 4.9 with 0-5V output and CAN
 |6|black|Nernst voltage UN|RE|
 
 **Ua and Ur during calibration (cold sensor, 10 calibration samples with 10ms pause):**
-- Ua: 359 => 1,7529
+- Ua: 359 => 1,7529V (should be 1.5V in calibration mode!)
 - Ur: 337 => 1.6455V
 
 **Changes:**
